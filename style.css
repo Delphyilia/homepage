@@ -1,0 +1,19 @@
+body {
+    background-color: #000000;
+}
+
+.logo {
+    width: 64vw;
+    height: 64vw;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    opacity: 0;
+    
+}
+
+.presents {
+    font-size: 8px;
+    color: #ffffff;
+}
+
