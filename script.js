@@ -8,11 +8,17 @@ async function appear_logo(){
     body.style.backgroundColor = "black";
     for (let i = 0; i < 100; i++) {
         let opacity_level = i/100;
-        await sleep(50);
+        await sleep(30);
         console.log(opacity_level);
         logo.style.opacity = String(opacity_level);
     }
-    //body.style.backgroundColor = '#1f4173';
+    let contents = document.getElementsByClassName("contents");
+    for (let j=0; j < 100; j++){
+    for (let i = 0; i < contents.length; i++) {
+        contents[i].style.opacity = j/100;
+    }
+    await sleep(10);
+    }
 }
 
 async function typyng(el, sentence){
@@ -30,7 +36,7 @@ async function typyng(el, sentence){
 
 // ページが完全に読み込まれた後に実行
 window.addEventListener('load', () => {
-    setTimeout(typyng('.typing','Delphyilia presents──'),0);
+    setTimeout(typyng('.typing','提供：Delphyilia──'),0);
     //setTimeout(appear_logo, 1000);
   });
   

@@ -3,8 +3,8 @@ body {
 }
 
 .logo {
-    width: 16vw;
-    height: 16vw;
+    width: 32vw;
+    height: 32vw;
     margin-left: auto;
     margin-right: auto;
     display: block;
@@ -17,3 +17,30 @@ body {
     color: #ffffff;
 }
 
+#menu {
+    font-size: 8px;
+    color: #ffffff;
+    text-align: center;
+    opacity: 1;
+    font-size: 1.5rem;
+    opacity: 0;
+}
+
+
+header {
+    text-align: center;
+    padding: 16px;
+    background-color: #15222a;
+    color: #ffffff;
+}
+
+footer {
+    text-align: center;
+    padding: 16px;
+    background-color: #15222a;
+    color: #cccccc;
+}
+
+.contents {
+    opacity: 0;
+}
