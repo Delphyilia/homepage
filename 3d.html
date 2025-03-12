@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>My first three.js app</title>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+		<header>
+			ヘッダー
+		</header>
+		<div>
+		<canvas id="canvas"></canvas>
+		</div>
+		<div style="color: aliceblue;">
+			3Dモデルの読み込み
+		</div>
+		<footer>
+			<p>© 2025 Delphyilia All rights reserved.</p>
+			<a href="index.html">戻る</a>
+		</footer>
+		<script src="https://unpkg.com/three@0.147.0/build/three.min.js"></script>
+		<script src="https://unpkg.com/three@0.147.0/examples/js/controls/OrbitControls.js"></script>
+		<script src="https://unpkg.com/three@0.147.0/examples/js/loaders/GLTFLoader.js"></script>
+		<script type="module">
+			// 画面サイズの取得
+			const windowWidth = window.innerWidth;
+			const windowHeight = window.innerHeight;
+
+			// レンダラーの作成
+			const canvas = document.getElementById('canvas')
+			const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true });
+			renderer.setSize(windowWidth, windowHeight/3*2);
+
+			// シーンの作成
+			const scene = new THREE.Scene();
+			// 背景色の設定(水色)
+			scene.background = new THREE.Color('#333333');
+
+			// 見やすいようにヘルパー（網目）を設定
+			let gridHelper = new THREE.GridHelper();
+			scene.add(gridHelper);
+
+			// カメラを作成
+			const camera = new THREE.PerspectiveCamera(50, windowWidth / windowHeight, 0.1, 1000);
+			camera.position.set(-10, 0, 0);
+			camera.lookAt(0, 0, 0);
+
+			// ライトの作成
+			const light = new THREE.PointLight(0xffffff, 1, 100);
+			light.position.set(10, 20, 5);
+			scene.add(light);
+
+			// マウス制御
+			//const controls = new THREE.OrbitControls(camera, renderer.domElement);
+
+			// 3Dモデルの読み込み
+			const loader = new THREE.GLTFLoader();
+			let model; // グローバルスコープで定義
+			let model2; // グローバルスコープで定義
+
+			loader.load('model2.glb', function (gltf) {
+				model = gltf.scene;
+				model.scale.set(0.5, 0.5, 0.5);
+				model.position.set(5, 0, 0);
+				scene.add(model);
+			});
+
+			loader.load('model2.glb', function (gltf) {
+				model2 = gltf.scene;
+				model2.scale.set(0.5, 0.5, 0.5);
+				model2.position.set(2, 0, 0)
+				scene.add(model2);
+			});
+			
+
+			// アニメーション
+			function animate() {
+				requestAnimationFrame(animate);
+				if (model) {
+					model.rotation.y += 0.01;
+					model2.rotation.y += 0.01;
+				}
+				//controls.update();
+				renderer.render(scene, camera);
+			}
+
+			// ウィンドウリサイズ対応
+			window.addEventListener('resize', () => {
+				const width = window.innerWidth;
+				const height = window.innerHeight;
+				camera.aspect = width / height;
+				camera.updateProjectionMatrix();
+				renderer.setSize(width, height);
+			});
+
+			// アニメーション実行
+			animate();
+		</script>
+	</body>
+</html>

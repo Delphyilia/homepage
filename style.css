@@ -1,5 +1,6 @@
 body {
     background-color: #000000;
+    color: #ffffff;
 }
 
 .logo {
@@ -8,8 +9,6 @@ body {
     margin-left: auto;
     margin-right: auto;
     display: block;
-    opacity: 0;
-    
 }
 
 .presents {
@@ -26,21 +25,47 @@ body {
     opacity: 0;
 }
 
+.wrapper {
+    min-height: 100vh;
+    position: relative;
+    padding-top: 64px;
+    padding-bottom: 64px;
+    box-sizing: border-box;
+}
 
 header {
     text-align: center;
     padding: 16px;
     background-color: #15222a;
     color: #ffffff;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    width: 100%;
 }
 
 footer {
+    width: 100%;
     text-align: center;
     padding: 16px;
     background-color: #15222a;
     color: #cccccc;
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
 }
 
-.contents {
-    opacity: 0;
+
+.product {
+    display: flex;
+}
+
+.product_left_main {
+    column-count: 2;
+    width: 70%;
+}
+
+.product_right_sub {
+    column-count: 2;
+    width: 30%;
 }
